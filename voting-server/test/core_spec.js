@@ -1,28 +1,47 @@
 import {expect} from 'chai';
 import {List, Map} from 'immutable';
 
-describe('immutability', () => {
+import {setEntries, next} from '../src/core';
 
-  describe('a tree', () => {
+describe('application logic', () => {
 
-    function addMovie (currentState, movie) {
-      return currentState.set(
-        'movies',
-        currentState.get('movies').push(movie)
-      );
-    }
+  describe('setEntries', () => {
 
-    it('is immutable', () => {
-      let state = Map({
-        movies: List.of('Transpotting', '28 Days Later')
-      });
-      let nextState = addMovie(state, 'Sunshine');
-
+    it('adds the entries to the state', () => {
+      const state = Map();
+      const entries = List.of('Trainspotting', '28 Days Later');
+      const nextState = setEntries(state, entries);
       expect(nextState).to.equal(Map({
-        movies: List.of('Transpotting', '28 Days Later', 'Sunshine')
+        entries: List.of('Trainspotting', '28 Days Later')
       }));
     });
 
-  });
+    it('converts to immutable', () => {
+      const state = Map();
+      const entries = ['Trainspotting', '28 Days Later'];
+      const nextState = setEntries(state, entries);
+      expect(nextState).to.equal(Map({
+        entries: List.of('Trainspotting', '28 Days Later')
+      }));
+    });
 
+    describe('next', () => {
+      it('takes the next two entries under vote', () => {
+        const state = Map({
+          entries: List.of(
+            'Trainspotting',
+            '28 Days Later',
+            'Sunshine'
+          )
+        });
+        const nextState = next(state);
+        expect(nextState).to.equal(Map({
+          vote: Map({
+            pair: List.of('Trainspotting', '28 Days Later')
+          }),
+          entries: List.of('Sunshine')
+        }));
+      });
+    });
+  });
 });
