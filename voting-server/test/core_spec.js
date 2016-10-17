@@ -76,7 +76,7 @@ describe('application logic', () => {
         vote: Map({
           pair: List.of('Trainspotting', '28 Days Later'),
           tally: Map({
-            'Trainspotting': 2,
+            'Trainspotting': 3,
             '28 Days Later': 3
           })
         }),
