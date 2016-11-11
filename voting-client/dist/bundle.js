@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "49db265aa5ca86d82e76"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1082c2a9256c7eeda9f4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8404,7 +8404,7 @@
 
 	var pair = ['Trainspotting', '28 Days Later'];
 
-	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair }), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair, hasVoted: 'Trainspotting' }), document.getElementById('app'));
 	;
 
 	var _temp = function () {
