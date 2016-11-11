@@ -110,7 +110,7 @@ describe('Voting', () => {
       container
     );
     firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
-    expect(firstButton.textContent).to.equsl('Sunshine');
+    expect(firstButton.textContent).to.equal('Sunshine');
   });
-  
+
 });
